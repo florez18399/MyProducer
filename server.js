@@ -4,7 +4,7 @@ const path = require('path');
 const amqpclient = require('./clientConnect');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const { json } = require('express');
+
 //------MULTER CONFIG
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.post('/upload', upload, function (request, response) {
+    console.log(request.file);
     let jsonMessage = {
         email: request.body.email,
         filename: new Date().getTime() + path.extname(request.file.originalname),

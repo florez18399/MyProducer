@@ -14,11 +14,11 @@ module.exports = {
                 let msg = message;
 
                 channel.assertQueue(queue, {
-                    durable: false
+                    durable: true
                 })
                 
                 channel.sendToQueue(queue, Buffer.from(msg))
-                console.log('Mensaje enviado', msg);
+                console.log('Mensaje enviado');
 
                 setTimeout(() => {
                     connection.close()
